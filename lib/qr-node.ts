@@ -44,7 +44,7 @@ export class Encoder {
   };
 
   public static encode(value: string, path?: string, options?: IOptions): Promise<any> {
-    let buffer: Buffer = (<any>Buffer).from? (<any>Buffer).from(value) : new Buffer(value);
+    let buffer: Buffer = Buffer.from? Buffer.from(value) : new Buffer(value);
     Object.assign(this.options, options);
 
     let qrencode_args: Array<any> = [
