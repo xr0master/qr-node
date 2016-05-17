@@ -16,6 +16,7 @@
     "orchestrator": "registry:dt/orchestrator#0.0.0+20150821143159",
     "q": "registry:dt/q#0.0.0+20160215162030",
     "run-sequence": "registry:dt/run-sequence#0.0.0+20150825164847",
+    "should": "github:DefinitelyTyped/DefinitelyTyped/should/should.d.ts#56295f5058cac7ae458540423c50ac2dcf9fc711",
     "through2": "registry:dt/through2#2.0.0+20160127111735",
     "vinyl": "registry:dt/vinyl#1.1.0+20160214195658"
   }
