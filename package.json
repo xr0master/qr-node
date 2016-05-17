@@ -4,6 +4,7 @@
   "scripts": {
     "postinstall": "typings install",
     "build": "node ./node_modules/gulp/bin/gulp --gulpfile gulpfile.ts --cwd ./ build",
+    "release": "node ./node_modules/gulp/bin/gulp --gulpfile gulpfile.ts --cwd ./ release",
     "test": "node ./node_modules/mocha/bin/mocha ./www/build/**/*.spec.js",
     "lint": "node ./node_modules/gulp/bin/gulp --gulpfile gulpfile.ts --cwd ./ test.lint",
     "watch": "node ./node_modules/gulp/bin/gulp --gulpfile gulpfile.ts --cwd ./ watch"

@@ -4,7 +4,7 @@ import * as gulp from 'gulp';
 import * as loadPlugins from 'gulp-load-plugins';
 import * as runSequence from 'run-sequence';
 import * as util from 'gulp-util';
-import {DIST_DIR, TYPINGS_DIR, APP_DIR, TEST_DIST} from './config';
+import {DIST_DIR, TYPINGS_DIR, APP_DIR, TEST_DIST, RELEASE_DIR} from './config';
 import {join} from 'path';
 
 let plugins: any = loadPlugins();
@@ -35,7 +35,7 @@ function clean(): any {
   'use strict';
 
   // You can use multiple globbing patterns as you would with `gulp.src`
-  return del([DIST_DIR + '**/*', '!' + TEST_DIST]).then((paths: Array<any>) => {
+  return del([DIST_DIR + '**/*', '!' + TEST_DIST, RELEASE_DIR + '**/*']).then((paths: Array<any>) => {
     util.log('Deleted', chalk.yellow(paths && paths.join(', ') || '-'));
   });
 }
@@ -91,4 +91,13 @@ gulp.task('watch.build', (done: any) => {
     'watch',
     done
   );
+});
+
+
+gulp.task('release', ['build'], (done: any) => {
+  'use strict';
+  return gulp.src([
+    join(DIST_DIR, '**/*'),
+    'www/package/package.json'
+  ]).pipe(gulp.dest(RELEASE_DIR));
 });
