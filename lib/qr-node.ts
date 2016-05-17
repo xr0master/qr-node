@@ -32,7 +32,7 @@ export const Types = {
 
 export class Encoder {
 
-  private static options: IOptions = <IOptions>{
+  private options: IOptions = <IOptions>{
     foreground_color: '#000000',
     background_color: '#ffffff',
     dot_size: 3,
@@ -43,7 +43,7 @@ export class Encoder {
     type: Types.PNG
   };
 
-  public static encode(value: string, path?: string, options?: IOptions): Promise<any> {
+  public encode(value: string, path?: string, options?: IOptions): Promise<any> {
     let buffer: Buffer = Buffer.from? Buffer.from(value) : new Buffer(value);
     Object.assign(this.options, options);
 
@@ -73,6 +73,14 @@ export class Encoder {
 
       process.stderr.on('data', (data) => {
         reject(data);
+      });
+
+      process.on('close', (exitstatus) => {
+        if (exitstatus) {
+          reject(`Exit with status error - ${exitstatus}`);
+        } else {
+          resolve();
+        }
       });
     });
   }
