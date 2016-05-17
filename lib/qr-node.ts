@@ -32,7 +32,7 @@ export const Types = {
 
 export class Encoder {
 
-  private options: IOptions = <IOptions>{
+  private static options: IOptions = <IOptions>{
     foreground_color: '#000000',
     background_color: '#ffffff',
     dot_size: 3,
@@ -43,23 +43,23 @@ export class Encoder {
     type: Types.PNG
   };
 
-  public encode(value: string, path?: string, options?: IOptions): Promise<any> {
+  public static encode(value: string, path?: string, options?: IOptions): Promise<any> {
     let buffer: Buffer = Buffer.from? Buffer.from(value) : new Buffer(value);
-    Object.assign(this.options, options);
+    options = Object.assign({}, this.options, options);
 
     let qrencode_args: Array<any> = [
-      '-s', this.options.dot_size,
-      '-m', this.options.margin,
-      '-l', this.options.level,
-      '-v', this.options.version,
-      '-t', this.options.type,
+      '-s', options.dot_size,
+      '-m', options.margin,
+      '-l', options.level,
+      '-v', options.version,
+      '-t', options.type,
       '-o', path || '-'
     ];
 
-    qrencode_args[qrencode_args.length] = '--foreground=' + this.options.foreground_color.replace('#','');
-    qrencode_args[qrencode_args.length] = '--background=' + this.options.background_color.replace('#','');
+    qrencode_args[qrencode_args.length] = '--foreground=' + options.foreground_color.replace('#','');
+    qrencode_args[qrencode_args.length] = '--background=' + options.background_color.replace('#','');
 
-    if (this.options.case_sensitive) {
+    if (options.case_sensitive) {
       qrencode_args[qrencode_args.length] = '-i';
     }
     qrencode_args[qrencode_args.length] = buffer;
