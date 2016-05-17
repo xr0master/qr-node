@@ -1,8 +1,9 @@
 {
   "name": "qr-node",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "NodeJS ES6 wrapper for libqrencode C library written by Kentaro Fukuchi",
   "main": "qr-node.js",
+  "typings": "qr-node.d.ts",
   "scripts": {
     "test": "node ./node_modules/mocha/bin/mocha ./www/build/**/*.spec.js"
   },
