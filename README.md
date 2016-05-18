@@ -13,7 +13,7 @@ where:
 return: Promise
 
 
-### How use
+### How to use
 
 Don't save to file and return Buffer. Used the default options
 ```javascript
