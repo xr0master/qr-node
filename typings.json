@@ -1,5 +1,5 @@
 {
-  "ambientDependencies": {
+  "globalDependencies": {
     "assert": "github:DefinitelyTyped/DefinitelyTyped/assert/assert.d.ts#7de6c3dd94feaeb21f20054b9f30d5dabc5efabd",
     "chalk": "registry:dt/chalk#0.4.0+20160222065144",
     "del": "registry:dt/del#2.2.0+20160209151603",

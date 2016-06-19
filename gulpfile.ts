@@ -18,7 +18,7 @@ function buildTypescript(): any {
   });
   let src: Array<any> = [
     join(APP_DIR, '**/*.ts'),
-    join(TYPINGS_DIR, '/browser.d.ts')
+    join(TYPINGS_DIR, '/index.d.ts')
   ];
   let result: any = gulp.src(src)
     .pipe(plugins.typescript(tsProject));
